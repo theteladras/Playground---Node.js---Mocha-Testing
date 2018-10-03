@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   let temp = `${date} ${req.method} ${req.url}`;
   console.log(temp);
   fs.appendFile('server.log', temp + '\n', (err) => {
-    if (e) {
+    if (err) {
         console.log('Unabile to append to server.log');
     }
   });
@@ -39,6 +39,13 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page',
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects',
+    randNum: Math.round(Math.random() * 100)
   });
 });
 
