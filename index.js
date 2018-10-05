@@ -30,7 +30,8 @@ app.use((req, res, next) => {
 // });
 
 app.get('/', (req, res) => {
-  res.render('home.hbs', {
+  res.send([{ data: true }, { blob: false }]);
+  res.status(200).render('home.hbs', {
     pageTitle: 'Home Page',
     welcomeMessage: 'Welcome to my Web.'
   });
@@ -41,6 +42,7 @@ app.get('/about', (req, res) => {
     pageTitle: 'About Page',
   });
 });
+
 
 app.get('/projects', (req, res) => {
   res.render('projects.hbs', {
